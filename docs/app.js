@@ -42,6 +42,7 @@
   let activeSection = "overview";
 
   const destinationNav = document.querySelector("#destination-nav");
+  const mobileDestinationNav = document.querySelector("#mobile-destination-nav");
   const sectionNav = document.querySelector("#section-nav");
   const mobileNav = document.querySelector("#mobile-nav");
   const content = document.querySelector("#page-content");
@@ -75,7 +76,7 @@
   }
 
   function renderDestinations() {
-    destinationNav.innerHTML = Object.values(trips).map((trip) => {
+    const markup = Object.values(trips).map((trip) => {
       const name = tripLabel(trip, "navLabel");
       const country = tripLabel(trip, "country");
       return `
@@ -85,6 +86,9 @@
         <span class="destination-arrow" aria-hidden="true">↗</span>
       </button>`;
     }).join("");
+    destinationNav.innerHTML = markup;
+    mobileDestinationNav.innerHTML = markup;
+    mobileDestinationNav.setAttribute("aria-label", t("chooseTrip"));
   }
 
   function renderSectionNav() {

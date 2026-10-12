@@ -21,6 +21,13 @@ button:focus-visible, input:focus-visible { outline: 3px solid #d48656; outline-
 .sidebar { display: none; }
 .main-content { width: 100%; min-width: 0; padding: 0 20px 95px; }
 .topbar { height: 65px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+.mobile-destination-nav { display: flex; gap: 8px; padding: 12px 0 0; }
+.mobile-destination-nav .destination-link { flex: 1; justify-content: center; gap: 7px; padding: 7px 8px; border: 1px solid var(--line); background: white; }
+.mobile-destination-nav .destination-link.is-active { border-color: #b8c8b8; background: var(--green-pale); }
+.mobile-destination-nav .destination-icon { width: 27px; height: 27px; background: var(--green-pale); font-size: 15px; }
+.mobile-destination-nav .destination-name { flex: 0 1 auto; font-size: 10px; }
+.mobile-destination-nav .destination-name small { font-size: 8px; }
+.mobile-destination-nav .destination-arrow { display: none; }
 .breadcrumb { display: flex; gap: 10px; align-items: center; color: #a2a8a1; font-size: 9px; font-weight: 700; letter-spacing: .13em; }
 .breadcrumb strong { color: var(--green); }
 .private-badge { padding: 8px 10px; border: 1px solid var(--line); border-radius: 30px; color: var(--green); font-size: 8px; font-weight: 700; letter-spacing: .09em; white-space: nowrap; }
@@ -161,6 +168,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid #d48656; outline-
 @media (min-width: 1024px) {
   .app-shell { display: grid; grid-template-columns: 238px minmax(0, 1fr); max-width: 1600px; min-height: 100vh; margin: 0 auto; }
   .sidebar { position: sticky; top: 0; display: flex; height: 100vh; flex-direction: column; padding: 31px 21px 22px; border-right: 1px solid var(--line); background: #f8f9f5; }
+  .mobile-destination-nav { display: none; }
   .brand { display: flex; gap: 9px; align-items: center; color: var(--ink); font-family: var(--serif); font-size: 20px; font-weight: 600; text-decoration: none; letter-spacing: -.04em; }
   .brand-mark { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: var(--green); color: white; font-family: var(--sans); font-size: 17px; }
   .brand-amp { color: var(--orange); }
