@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f2">
+    <meta name="description" content="Seu guia visual de viagem para Donegal e Japão.">
+    <title>Rota & Mar — seu guia de viagem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
+        <a class="brand" id="brand-link" href="#" aria-label="Rota e Mar, início">
+          <span class="brand-mark" aria-hidden="true">↗</span>
+          <span>rota <span class="brand-amp">&</span> mar</span>
+        </a>
+
+        <p class="nav-label" id="sidebar-nav-label">SUAS VIAGENS</p>
+        <div id="destination-nav" class="destination-nav" aria-label="Escolha uma viagem"></div>
+
+        <div class="sidebar-note">
+          <span class="note-icon" aria-hidden="true">✳</span>
+          <p id="sidebar-quote">O melhor roteiro é aquele que também deixa espaço para se perder.</p>
+          <span class="note-credit" id="sidebar-credit">UM LEMBRETE DE VIAGEM</span>
+        </div>
+        <span class="sidebar-footer"><span id="sidebar-footer-text">FEITO PARA IR MAIS LONGE</span> <span aria-hidden="true">✦</span></span>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span id="breadcrumb-label">SUAS VIAGENS</span><span aria-hidden="true">/</span><strong id="breadcrumb-destination"></strong></div>
+          <span class="private-badge"><span aria-hidden="true">●</span> <span id="private-badge-label">SEU GUIA PARTICULAR</span></span>
+        </header>
+
+        <section id="trip-hero" class="trip-hero" aria-labelledby="trip-title">
+          <div class="hero-copy">
+            <span id="trip-region" class="eyebrow"></span>
+            <h1 id="trip-title"></h1>
+            <p id="trip-intro"></p>
+            <div class="hero-meta">
+              <span><span aria-hidden="true">◷</span> <span id="trip-duration"></span></span>
+              <span class="meta-divider" aria-hidden="true"></span>
+              <span><span aria-hidden="true">⌖</span> <span id="trip-season"></span></span>
+            </div>
+          </div>
+          <div class="hero-stamp" aria-hidden="true"><span id="stamp-label">PRÓXIMA</span><strong id="stamp-title">grande<br>aventura</strong><i>✳</i></div>
+        </section>
+
+        <nav id="section-nav" class="section-nav" aria-label="Seções da viagem"></nav>
+        <section id="page-content" class="page-content" aria-live="polite"></section>
+
+        <footer class="page-footer"><span id="page-footer-text">FEITO COM CURIOSIDADE E UMA BOA DOSE DE CAFÉ</span><span>ROTA & MAR <span aria-hidden="true">✳</span></span></footer>
+      </main>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Seções da viagem no celular"></nav>
+  </body>
+</html>
