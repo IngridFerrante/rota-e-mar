@@ -315,6 +315,13 @@
     updateSearchResults();
   }
 
+  function scrollToActiveSection() {
+    const target = content.querySelector(".section-heading") || content;
+    const topOffset = window.innerWidth <= 700 ? 82 : 145;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - topOffset;
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: "instant" });
+  }
+
   async function shareTripFacts() {
     const trip = trips[activeTrip];
     const summary = `${tripLabel(trip, "navLabel")} · ${trip.duration}\n${trip.overview[0].value}\n${trip.season}`;
@@ -369,7 +376,7 @@
     } else if (sectionButton) {
       activeSection = sectionButton.dataset.section;
       render();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToActiveSection();
     }
   });
 
