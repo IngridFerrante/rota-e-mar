@@ -442,7 +442,7 @@ a { color: inherit; }
   .main-content { padding: 0 32px 44px; }
   .topbar { height: 70px; }
   .trip-hero { min-height: 440px; margin-top: 23px; }
-  .hero-copy { padding: 44px 36px 38px; }
+  .hero-copy { width: calc(100% - 150px); padding: 44px 36px 38px; }
   .hero-copy h1 { font-size: clamp(58px, 7vw, 82px); }
   .hero-copy > p { font-size: 13px; }
   .hero-stamp {
@@ -487,6 +487,11 @@ a { color: inherit; }
   .budget-list { padding-right: 23px; padding-left: 23px; }
   .essentials-layout { grid-template-columns: 1.25fr .75fr; }
   .culture-card { padding: 25px; }
+}
+
+@media (max-width: 767px) {
+  .hero-copy { width: 100%; }
+  .hero-stamp { display: none; }
 }
 
 @media (min-width: 1024px) {
