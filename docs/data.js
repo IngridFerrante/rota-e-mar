@@ -38,7 +38,8 @@ window.TRIPS = {
       { title: "Ballymastocker Bay", detail: "A stunning hilltop viewpoint over a pristine golden beach.", tag: "COAST" },
       { title: "Grianan of Aileach", detail: "A 6th-century circular stone fort with 360° panoramic views.", tag: "HISTORY" },
       { title: "Mamore Gap", detail: "A steep, narrow mountain pass overlooking the coastline.", tag: "MOUNTAIN PASS" },
-      { title: "Malin Head", detail: "Ireland's northernmost point, with wild seascape views.", tag: "COAST" }
+      { title: "Malin Head", detail: "Ireland's northernmost point, with wild seascape views.", tag: "COAST" },
+      { title: "Errigal Mount", detail: "It's the highest peak in County Donegal, standing at 751 meters", tag: "ROAD" },
     ],
     budget: [
       { item: "Accommodation", amount: 125, detail: "Two nights: Ardara and Buncrana" },
