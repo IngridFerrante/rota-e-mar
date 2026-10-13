@@ -3,10 +3,14 @@
   const languages = {
     "en-IE": {
       sections: ["Overview", "Itinerary", "Bucket list", "Budget", "Practical tips"],
-      sidebarNav: "YOUR TRIPS", chooseTrip: "Choose a trip", mainNavigation: "Main navigation", quote: "The best itineraries leave room to get a little lost.", credit: "A LITTLE TRAVEL REMINDER", sidebarFooter: "MADE TO GO A LITTLE FURTHER",
+      chooseTrip: "Choose a trip", mainNavigation: "Main navigation",
       breadcrumb: "YOUR TRIPS", privateBadge: "YOUR PRIVATE TRAVEL GUIDE", stampLabel: "UP NEXT", stampTitle: "a grand<br>adventure", sectionNav: "Trip sections", mobileNav: "Trip sections",
+      headerCta: "YOUR ITINERARY", searchPlaceholder: "Search a place or experience", searchLabel: "Search the itinerary", searchSubmit: "Explore", searchResults: "Search results", searchNoResults: "No matches in this itinerary yet.",
+      shareFacts: "Share trip details", shareCopied: "Trip details copied.", shareDone: "Ready to share.", shareUnavailable: "Sharing is not available in this browser.", shareCancelled: "Sharing cancelled.", shareError: "Could not share the trip details.",
       pageFooter: "MADE WITH CURIOSITY AND A VERY GOOD CUP OF COFFEE",
       overviewEyebrow: "A LITTLE PREVIEW", overviewTitle: "The plan, at a glance.", overviewAside: "A flexible itinerary. Lovely places. Time to enjoy them.",
+      highlightsEyebrow: "PLACES TO REMEMBER", highlightsTitle: "A few moments to look forward to.", viewHighlight: "Explore this stop",
+      journalEyebrow: "A NOTE FROM THE TRIP", factsEyebrow: "TRIP AT A GLANCE", factsDuration: "LENGTH", factsRoute: "ROUTE", factsOpen: "Open the itinerary",
       pace: "AT YOUR OWN PACE", discoveries: "{count} days<br>of discovery.", explore: "Mornings to explore, afternoons for surprises and evenings to unwind.", viewItinerary: "View the itinerary",
       easyPlanning: "EASY PLANNING", costIdea: "A clearer idea<br>of the costs.", costIntro: "Illustrative estimates you can update to suit your plans.", viewBudget: "Explore the budget",
       dreamTripTip: "A NOTE FOR THE TRIP WE'RE ALREADY DREAMING ABOUT", itineraryEyebrow: "DAY BY DAY", itineraryTitle: "The journey is part of it.", daysIdeas: "{count} days · ideas to make your own",
@@ -20,10 +24,14 @@
     },
     "pt-BR": {
       sections: ["Visão geral", "Roteiro", "Lista de desejos", "Orçamento", "Dicas práticas"],
-      sidebarNav: "SUAS VIAGENS", chooseTrip: "Escolha uma viagem", mainNavigation: "Navegação principal", quote: "O melhor roteiro é aquele que também deixa espaço para se perder.", credit: "UM LEMBRETE DE VIAGEM", sidebarFooter: "FEITO PARA IR MAIS LONGE",
+      chooseTrip: "Escolha uma viagem", mainNavigation: "Navegação principal",
       breadcrumb: "SUAS VIAGENS", privateBadge: "SEU GUIA PARTICULAR", stampLabel: "PRÓXIMA", stampTitle: "grande<br>aventura", sectionNav: "Seções da viagem", mobileNav: "Seções da viagem no celular",
+      headerCta: "SEU ROTEIRO", searchPlaceholder: "Busque um lugar ou experiência", searchLabel: "Busque no roteiro", searchSubmit: "Explorar", searchResults: "Resultados da busca", searchNoResults: "Não encontramos esse lugar neste roteiro.",
+      shareFacts: "Compartilhar ficha", shareCopied: "Ficha copiada.", shareDone: "Pronto para compartilhar.", shareUnavailable: "O compartilhamento não está disponível neste navegador.", shareCancelled: "Compartilhamento cancelado.", shareError: "Não foi possível compartilhar a ficha da viagem.",
       pageFooter: "FEITO COM CURIOSIDADE E UMA BOA DOSE DE CAFÉ",
       overviewEyebrow: "UM GOSTINHO DO QUE VEM AÍ", overviewTitle: "O plano, em poucas palavras.", overviewAside: "Um roteiro flexível. Bons lugares. Tempo para aproveitar.",
+      highlightsEyebrow: "LUGARES PARA GUARDAR", highlightsTitle: "Alguns momentos para esperar com carinho.", viewHighlight: "Ver este lugar",
+      journalEyebrow: "UMA NOTA DE VIAGEM", factsEyebrow: "FICHA DA VIAGEM", factsDuration: "DURAÇÃO", factsRoute: "ROTEIRO", factsOpen: "Abrir roteiro completo",
       pace: "NO SEU RITMO", discoveries: "{count} dias<br>de descobertas.", explore: "Manhãs para explorar, tardes para se surpreender e noites para brindar.", viewItinerary: "Ver o roteiro",
       easyPlanning: "PLANEJAMENTO LEVE", costIdea: "Uma ideia clara<br>dos custos.", costIntro: "Estimativas fáceis de ajustar para fazer a viagem caber nos seus planos.", viewBudget: "Explorar orçamento",
       dreamTripTip: "DICA DE QUEM JÁ ESTÁ SONHANDO COM A VIAGEM", itineraryEyebrow: "DIA A DIA", itineraryTitle: "O caminho também faz parte.", daysIdeas: "{count} dias · ideias para adaptar no caminho",
@@ -38,7 +46,8 @@
   };
   const sectionIds = ["overview", "itinerary", "bucket", "budget", "essentials"];
   const icons = { donegal: "✳", japan: "◈" };
-  let activeTrip = "donegal";
+  const requestedTrip = new URLSearchParams(window.location.search).get("trip");
+  let activeTrip = Object.values(trips).some((trip) => trip.id === requestedTrip) ? requestedTrip : "donegal";
   let activeSection = "overview";
 
   const destinationNav = document.querySelector("#destination-nav");
@@ -46,6 +55,9 @@
   const sectionNav = document.querySelector("#section-nav");
   const mobileNav = document.querySelector("#mobile-nav");
   const content = document.querySelector("#page-content");
+  const searchForm = document.querySelector("#guide-search");
+  const searchInput = document.querySelector("#guide-search-input");
+  const searchResults = document.querySelector("#search-results");
 
   function t(key) {
     const language = languages[trips[activeTrip].language] || languages["pt-BR"];
@@ -106,13 +118,14 @@
     document.documentElement.lang = trip.language || "pt-BR";
     document.querySelector("#sidebar").setAttribute("aria-label", t("mainNavigation"));
     document.querySelector("#brand-link").setAttribute("aria-label", "Rota & Mar");
-    document.querySelector("#sidebar-nav-label").textContent = t("sidebarNav");
     document.querySelector("#destination-nav").setAttribute("aria-label", t("chooseTrip"));
-    document.querySelector("#sidebar-quote").textContent = t("quote");
-    document.querySelector("#sidebar-credit").textContent = t("credit");
-    document.querySelector("#sidebar-footer-text").textContent = t("sidebarFooter");
     document.querySelector("#breadcrumb-label").textContent = t("breadcrumb");
     document.querySelector("#private-badge-label").textContent = t("privateBadge");
+    document.querySelector("#header-cta-label").textContent = t("headerCta");
+    searchInput.placeholder = t("searchPlaceholder");
+    searchInput.setAttribute("aria-label", t("searchLabel"));
+    searchResults.setAttribute("aria-label", t("searchResults"));
+    document.querySelector("#guide-search-submit").innerHTML = `${t("searchSubmit")} <span aria-hidden="true">↗</span>`;
     document.querySelector("#stamp-label").textContent = t("stampLabel");
     document.querySelector("#stamp-title").innerHTML = t("stampTitle");
     document.querySelector("#page-footer-text").textContent = t("pageFooter");
@@ -132,6 +145,7 @@
   }
 
   function overviewTemplate(trip) {
+    const highlights = trip.bucket.slice(0, 3);
     return `
       <div class="section-heading">
         <div><span class="eyebrow">${t("overviewEyebrow")}</span><h2>${t("overviewTitle")}</h2></div>
@@ -140,18 +154,33 @@
       <div class="overview-grid overview-grid--${trip.overview.length}">
         ${trip.overview.map((item) => `<article class="overview-card"><span class="overview-icon" aria-hidden="true">${item.icon}</span><span class="card-label">${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></article>`).join("")}
       </div>
+      <section class="highlights-section" aria-labelledby="highlights-title">
+        <div class="section-heading"><div><span class="eyebrow">${t("highlightsEyebrow")}</span><h2 id="highlights-title">${t("highlightsTitle")}</h2></div></div>
+        <div class="highlights-grid">${highlights.map((item, index) => `
+          <button class="highlight-card" type="button" data-search-section="bucket" data-search-index="${index}">
+            <span class="highlight-number" aria-hidden="true">0${index + 1}</span><span class="bucket-tag">${escapeHtml(item.tag)}</span>
+            <strong>${escapeHtml(item.title)}</strong><span class="bucket-detail">${escapeHtml(item.detail)}</span>
+            <span class="highlight-link">${t("viewHighlight")} <span aria-hidden="true">↗</span></span>
+          </button>`).join("")}</div>
+      </section>
       <div class="feature-grid">
         <article class="feature-card feature-itinerary"><div class="feature-topline"><span>${t("pace")}</span><span aria-hidden="true">↗</span></div><h3>${interpolate(t("discoveries"), { count: trip.itinerary.length })}</h3><p>${t("explore")}</p><button class="text-link" data-section="itinerary">${t("viewItinerary")} <span aria-hidden="true">→</span></button></article>
         <article class="feature-card feature-budget"><div class="feature-topline"><span>${t("easyPlanning")}</span><span aria-hidden="true">◉</span></div><h3>${t("costIdea")}</h3><p>${t("costIntro")}</p><button class="text-link" data-section="budget">${t("viewBudget")} <span aria-hidden="true">→</span></button></article>
       </div>
-      <div class="tip-banner"><span class="tip-spark" aria-hidden="true">✳</span><div><span class="card-label">${t("dreamTripTip")}</span><p>${escapeHtml(trip.tip)}</p></div></div>`;
+      <div class="editorial-grid">
+        <article class="travel-note"><span class="card-label">${t("journalEyebrow")}</span><blockquote>${escapeHtml(trip.tip)}</blockquote></article>
+        <aside class="trip-facts"><span class="card-label">${t("factsEyebrow")}</span><strong>${escapeHtml(tripLabel(trip, "navLabel"))}</strong><dl>
+          <div><dt>${t("factsDuration")}</dt><dd>${escapeHtml(trip.duration)}</dd></div>
+          <div><dt>${t("factsRoute")}</dt><dd>${escapeHtml(trip.overview[0].value)}</dd></div>
+        </dl><div class="trip-facts-actions"><button class="text-link" data-section="itinerary">${t("factsOpen")} <span aria-hidden="true">→</span></button><button class="share-trip" type="button" data-share-trip>${t("shareFacts")} <span aria-hidden="true">↗</span></button></div><p id="share-status" class="share-status" role="status" aria-live="polite"></p></aside>
+      </div>`;
   }
 
   function itineraryTemplate(trip) {
     return `
       <div class="section-heading"><div><span class="eyebrow">${t("itineraryEyebrow")}</span><h2>${t("itineraryTitle")}</h2></div><p class="heading-aside">${interpolate(t("daysIdeas"), { count: trip.itinerary.length })}</p></div>
-      <div class="timeline">${trip.itinerary.map((day) => `
-        <article class="timeline-day">
+      <div class="timeline">${trip.itinerary.map((day, index) => `
+        <article class="timeline-day" data-day-search="${index}">
           <div class="day-marker"><span>${t("day")}</span><strong>${escapeHtml(day.day)}</strong></div>
           <div class="day-content"><div class="day-heading"><div><h3>${escapeHtml(day.title)}</h3>${day.date ? `<span class="day-date">${escapeHtml(day.date)}</span>` : ""}<span class="day-place">⌖ ${escapeHtml(day.place)}</span></div><span class="day-chevron" aria-hidden="true">✳</span></div>
             <div class="day-moments">
@@ -168,7 +197,7 @@
     return `
       <div class="section-heading"><div><span class="eyebrow">${t("bucketEyebrow")}</span><h2>${t("bucketTitle")}</h2></div><p class="heading-aside">${interpolate(t("bucketCount"), { done: checked.length, total: trip.bucket.length })}</p></div>
       <div class="bucket-grid">${trip.bucket.map((item, index) => `
-        <label class="bucket-card ${checked.includes(index) ? "is-checked" : ""}">
+        <label class="bucket-card ${checked.includes(index) ? "is-checked" : ""}" data-bucket-search="${index}">
           <input class="bucket-check" type="checkbox" data-check="${index}" ${checked.includes(index) ? "checked" : ""} aria-label="${escapeHtml(interpolate(t("bucketComplete"), { title: item.title }))}">
           <span class="check-visual" aria-hidden="true">✓</span><span class="bucket-tag">${escapeHtml(item.tag)}</span>
           <strong>${escapeHtml(item.title)}</strong><span class="bucket-detail">${escapeHtml(item.detail)}</span>
@@ -236,6 +265,46 @@
     content.innerHTML = templates[activeSection](trip);
   }
 
+  function findSearchMatches(query, trip) {
+    const normalizedQuery = query.trim().toLocaleLowerCase(trip.language || "pt-BR");
+    if (!normalizedQuery) return [];
+    const days = trip.itinerary.map((day, index) => {
+      const moments = [day.morning, day.afternoon, day.evening].flatMap((value) => Array.isArray(value) ? value : [value]).join(" ");
+      return {
+        section: "itinerary",
+        index,
+        title: day.title,
+        meta: `${t("day")} ${day.day}${day.date ? ` · ${day.date}` : ""}`,
+        searchable: `${day.title} ${day.place} ${day.date || ""} ${moments}`
+      };
+    });
+    const places = trip.bucket.map((item, index) => ({
+      section: "bucket",
+      index,
+      title: item.title,
+      meta: item.tag,
+      searchable: `${item.title} ${item.detail} ${item.tag}`
+    }));
+    return [...days, ...places].filter((item) => item.searchable.toLocaleLowerCase(trip.language || "pt-BR").includes(normalizedQuery)).slice(0, 6);
+  }
+
+  function updateSearchResults() {
+    const query = searchInput.value.trim();
+    if (!query) {
+      searchResults.hidden = true;
+      searchResults.replaceChildren();
+      document.querySelector("#trip-hero").classList.remove("search-open");
+      return [];
+    }
+    const matches = findSearchMatches(query, trips[activeTrip]);
+    searchResults.innerHTML = matches.length
+      ? matches.map((match) => `<button class="search-result" type="button" data-search-section="${match.section}" data-search-index="${match.index}"><span><strong>${escapeHtml(match.title)}</strong><small>${escapeHtml(match.meta)}</small></span><span aria-hidden="true">↗</span></button>`).join("")
+      : `<p class="search-empty">${t("searchNoResults")}</p>`;
+    searchResults.hidden = false;
+    document.querySelector("#trip-hero").classList.add("search-open");
+    return matches;
+  }
+
   function render() {
     const trip = trips[activeTrip];
     renderStaticLabels(trip);
@@ -243,13 +312,58 @@
     renderSectionNav();
     renderHero(trip);
     renderContent(trip);
+    updateSearchResults();
+  }
+
+  async function shareTripFacts() {
+    const trip = trips[activeTrip];
+    const summary = `${tripLabel(trip, "navLabel")} · ${trip.duration}\n${trip.overview[0].value}\n${trip.season}`;
+    const status = content.querySelector("#share-status");
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: `Rota & Mar · ${tripLabel(trip, "navLabel")}`, text: summary, url: window.location.href });
+        status.textContent = t("shareDone");
+      } else if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(`${summary}\n${window.location.href}`);
+        status.textContent = t("shareCopied");
+      } else {
+        status.textContent = t("shareUnavailable");
+      }
+    } catch (error) {
+      if (error.name === "AbortError") {
+        status.textContent = t("shareCancelled");
+      } else {
+        status.textContent = t("shareError");
+        console.error("Não foi possível compartilhar a ficha da viagem.", error);
+      }
+    }
   }
 
   document.addEventListener("click", (event) => {
     const tripButton = event.target.closest("[data-trip]");
     const sectionButton = event.target.closest("[data-section]");
-    if (tripButton) {
+    const searchResult = event.target.closest("[data-search-section]");
+    const shareButton = event.target.closest("[data-share-trip]");
+    if (shareButton) {
+      shareTripFacts();
+    } else if (searchResult) {
+      activeSection = searchResult.dataset.searchSection;
+      const selector = activeSection === "itinerary" ? "day" : "bucket";
+      const searchIndex = searchResult.dataset.searchIndex;
+      searchInput.value = "";
+      render();
+      searchResults.hidden = true;
+      const target = content.querySelector(`[data-${selector}-search="${searchIndex}"]`);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+        target.classList.add("search-highlight");
+        window.setTimeout(() => target.classList.remove("search-highlight"), 1800);
+      }
+    } else if (tripButton) {
       activeTrip = tripButton.dataset.trip;
+      const url = new URL(window.location.href);
+      url.searchParams.set("trip", activeTrip);
+      window.history.replaceState(null, "", url);
       activeSection = "overview";
       render();
     } else if (sectionButton) {
@@ -257,6 +371,13 @@
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  });
+
+  searchInput.addEventListener("input", updateSearchResults);
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    updateSearchResults();
+    searchResults.querySelector(".search-result")?.click();
   });
 
   document.addEventListener("change", (event) => {

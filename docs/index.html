@@ -3,34 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0a171b">
+    <meta name="theme-color" content="#f6f4ef">
     <meta name="description" content="Seu guia visual de viagem para Donegal e Japão.">
     <title>Rota & Mar — seu guia de viagem</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=cinematic-2">
+    <link rel="stylesheet" href="styles.css?v=editorial-1">
     <script src="data.js" defer></script>
-    <script src="app.js?v=cinematic-1" defer></script>
+    <script src="app.js?v=editorial-1" defer></script>
   </head>
   <body>
     <div class="app-shell">
-      <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
+      <header class="site-header" id="sidebar" aria-label="Navegação principal">
         <a class="brand" id="brand-link" href="#" aria-label="Rota e Mar, início">
-          <span class="brand-mark" aria-hidden="true">↗</span>
+          <span class="brand-mark" aria-hidden="true">✳</span>
           <span>rota <span class="brand-amp">&</span> mar</span>
         </a>
-
-        <p class="nav-label" id="sidebar-nav-label">SUAS VIAGENS</p>
-        <div id="destination-nav" class="destination-nav" aria-label="Escolha uma viagem"></div>
-
-        <div class="sidebar-note">
-          <span class="note-icon" aria-hidden="true">✳</span>
-          <p id="sidebar-quote">O melhor roteiro é aquele que também deixa espaço para se perder.</p>
-          <span class="note-credit" id="sidebar-credit">UM LEMBRETE DE VIAGEM</span>
-        </div>
-        <span class="sidebar-footer"><span id="sidebar-footer-text">FEITO PARA IR MAIS LONGE</span> <span aria-hidden="true">✦</span></span>
-      </aside>
+        <nav id="destination-nav" class="destination-nav" aria-label="Escolha uma viagem"></nav>
+        <a class="header-cta" href="#page-content"><span id="header-cta-label">SEU ROTEIRO</span><span aria-hidden="true">↘</span></a>
+      </header>
 
       <main class="main-content">
         <header class="topbar">
@@ -50,6 +42,16 @@
               <span class="meta-divider" aria-hidden="true"></span>
               <span><span aria-hidden="true">⌖</span> <span id="trip-season"></span></span>
             </div>
+          </div>
+          <div class="hero-search-wrap">
+            <form id="guide-search" class="hero-search" role="search">
+              <label class="search-field" for="guide-search-input">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input id="guide-search-input" type="search" autocomplete="off" placeholder="Busque um lugar ou experiência" aria-label="Busque no roteiro">
+              </label>
+              <button id="guide-search-submit" type="submit">Explorar <span aria-hidden="true">↗</span></button>
+            </form>
+            <div id="search-results" class="search-results" aria-label="Resultados da busca" aria-live="polite" hidden></div>
           </div>
           <div class="hero-stamp" aria-hidden="true"><span id="stamp-label">PRÓXIMA</span><strong id="stamp-title">grande<br>aventura</strong><i>✳</i></div>
         </section>

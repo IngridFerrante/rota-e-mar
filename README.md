@@ -5,7 +5,8 @@ Site estático para planejar as viagens a Donegal e ao Japão. Não precisa de s
 ## Personalizar o guia
 
 - Edite `docs/data.js` para atualizar destinos, dias, atividades, dicas e valores estimados.
-- Edite `docs/styles.css` para ajustar cores e aparência. O visual principal usa uma estética cinematográfica em Azul-Teal e Terracota e se adapta a celulares e telas maiores.
+- Edite `docs/styles.css` para ajustar cores e aparência. O visual principal usa uma estética editorial clara, com tons neutros, verde-sálvia e terracota, e se adapta a celulares e telas maiores.
+- A busca do hero encontra dias e experiências do destino selecionado; os destaques abrem o item correspondente na lista de desejos e a ficha da viagem pode ser compartilhada pelo navegador.
 - Os checklists marcados ficam salvos apenas no navegador e aparelho em que foram usados.
 
 Os custos e planos incluídos são exemplos editáveis, não cotações nem reservas confirmadas.
