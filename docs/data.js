@@ -41,21 +41,15 @@ window.TRIPS = {
       { title: "Malin Head", detail: "Ireland's northernmost point, with wild seascape views.", tag: "COAST" }
     ],
     budget: [
-      { item: "Flights", amount: 420, detail: "Illustrative return fare per person, if applicable" },
-      { item: "Accommodation", amount: 200, detail: "Two nights: Ardara and Buncrana" },
-      { item: "Car hire & fuel", amount: 230, detail: "Illustrative estimate for the road trip" },
-      { item: "Food & drinks", amount: 150, detail: "Meals, snacks and pub stops" },
-      { item: "Activities & extras", amount: 60, detail: "Entry fees and a small contingency" }
+      { item: "Accommodation", amount: 125, detail: "Two nights: Ardara and Buncrana" },
+      { item: "Car fuel", amount: 45, detail: "Illustrative estimate for the road trip" },
+      { item: "Food & drinks", amount: 120, detail: "Meals, snacks and pub stops" },
     ],
     essentials: [
-      { title: "Passport & entry requirements", detail: "Check your passport validity and the entry rules for your nationality." },
       { title: "Waterproof layers", detail: "November weather can change quickly; bring a rain jacket and sturdy shoes." },
-      { title: "Driving licence & rental details", detail: "Confirm rental requirements and remember: traffic drives on the left." },
-      { title: "Payment cards & some cash", detail: "Keep a backup payment method for small businesses and unexpected stops." },
-      { title: "Power adapter", detail: "Ireland uses Type G plugs." },
-      { title: "Travel insurance", detail: "Save your policy and emergency contact details for offline access." }
+      { title: "Payment cards", detail: "Ireland is very good accepting card everywhere pretty much." },
     ],
-    tip: "November days are short, with sunset before 5 pm. This is an ambitious driving itinerary, especially on Thursday and Saturday: start early, check local opening times and weather, and leave a generous buffer for the drive back to Dublin. In Ireland, drive on the left and use passing places on narrow rural roads."
+    tip: "November days are short, with sunset before 5 pm. This is an ambitious driving itinerary, especially on Thursday and Saturday: start early, check local opening times and weather."
   },
   japan: {
     id: "japan",
