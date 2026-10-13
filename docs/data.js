@@ -69,7 +69,7 @@ window.TRIPS = {
     season: "20 de fevereiro · 7 de março",
     currency: "¥",
     currencyLabel: "JPY",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1800&q=85",
+    image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1800&q=85",
     imagePosition: "center 56%",
     overview: [
       { icon: "⌖", label: "CIDADES", value: "Tóquio · Kyoto · Osaka" },
