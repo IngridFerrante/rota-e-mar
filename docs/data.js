@@ -23,21 +23,22 @@ window.TRIPS = {
       { icon: "☼", label: "OVERNIGHT STAYS", value: "Ardara · Buncrana" }
     ],
     itinerary: [
-      { day: "01", date: "Thursday, 5 November 2026", title: "Dublin to Donegal", place: "Dublin → County Donegal", stay: "Ardara", morning: "Leave Dublin early and drive north-west towards Donegal. Allow plenty of time for the journey and breaks.", afternoon: "Visit the Slieve League cliffs. Check local access and weather conditions before setting off.", evening: "Stop at Silver Strand, then continue to Ardara for your overnight stay." },
-      { day: "02", date: "Friday, 6 November 2026", title: "Donegal's north-west coast", place: "Glenveagh · Fanad · Ballymastocker", stay: "Buncrana", morning: "Explore Glenveagh National Park. Check opening times and allow time for the drive to the coast.", afternoon: "Continue to Murder Hole Beach and Fanad Head Lighthouse. Check access, tides and daylight before visiting the beach.", evening: "See Ballymastocker Bay, then drive to Buncrana for your overnight stay." },
-      { day: "03", date: "Saturday, 7 November 2026", title: "Inishowen & back to Dublin", place: "Inishowen Peninsula → Dublin", stay: "Return to Dublin", morning: "Visit Grianán of Aileach and Fort Dunree, then continue via Mamore Gap.", afternoon: "Head to Malin Head, Ireland's northernmost point. Allow enough daylight for the visit and drive back.", evening: "Drive back to Dublin. This is a long final day; check the route, weather and road conditions before departing." }
+      { day: "01", date: "Thursday, 5 November 2026", title: "The Wild Southwest Coast", place: "Donegal Town → Slieve League → Ardara", stay: "Ardara", morning: ["Coffee stop in Donegal Town, the entry point to the Wild Atlantic Way.", "Head to Slieve League for colossal sea cliffs and breathtaking ocean views."], afternoon: ["Silver Strand (Malin Beg): a hidden horseshoe-shaped beach framed by tall cliffs.", "Glengesh Pass: a scenic winding road through a dramatic mountain valley."], evening: ["Assaranca Waterfall: an easily accessible roadside waterfall.", "Overnight in Ardara."] },
+      { day: "02", date: "Friday, 6 November 2026", title: "National Park, Lighthouses & Bays", place: "Glenveagh · Fanad · Ballymastocker", stay: "Buncrana", morning: ["Glenveagh National Park & Castle: serene lakes, mountains and a Victorian castle."], afternoon: ["Fanad Head Lighthouse: an iconic lighthouse perched on rugged black rocks.", "Ballymastocker Bay: a stunning hilltop viewpoint over a pristine golden beach."], evening: ["Overnight in Buncrana, a strategic base to save driving time the next morning."] },
+      { day: "03", date: "Saturday, 7 November 2026", title: "Inishowen Peninsula & Return to Dublin", place: "Inishowen Peninsula → Dublin", stay: "Dublin", morning: ["Grianan of Aileach: a 6th-century circular stone fort with 360° panoramic views.", "Mamore Gap: a steep, narrow mountain pass overlooking the coastline."], afternoon: ["Malin Head: Ireland's northernmost point, with wild seascape views."], evening: ["Drive back to Dublin in the late afternoon. Check weather and road conditions before setting off."] }
     ],
     bucket: [
-      { title: "Slieve League", detail: "Take in the dramatic sea cliffs; check weather and access before you go.", tag: "CLIFFS" },
-      { title: "Silver Strand", detail: "A sheltered curve of sand near Malin Beg. Check local access and conditions.", tag: "BEACH" },
-      { title: "Glenveagh National Park", detail: "A peaceful mix of mountains, lakeside walks and castle gardens.", tag: "NATIONAL PARK" },
-      { title: "Murder Hole Beach", detail: "A remote coastal spot: check tides, access and safety advice before visiting.", tag: "BEACH" },
-      { title: "Fanad Head Lighthouse", detail: "A landmark lighthouse on a beautiful stretch of the Donegal coast.", tag: "LIGHTHOUSE" },
-      { title: "Ballymastocker Bay", detail: "A sweeping Atlantic beach, especially lovely when the light breaks through.", tag: "COAST" },
-      { title: "Grianán of Aileach", detail: "An ancient stone fort with wide views over the surrounding landscape.", tag: "HISTORY" },
-      { title: "Fort Dunree", detail: "A coastal fort and museum overlooking Lough Swilly; check opening hours.", tag: "HISTORY" },
-      { title: "Mamore Gap", detail: "A scenic mountain pass on the Inishowen Peninsula. Drive with care.", tag: "SCENIC DRIVE" },
-      { title: "Malin Head", detail: "Ireland's northernmost point, with rugged Atlantic views.", tag: "COAST" }
+      { title: "Donegal Town", detail: "A coffee stop and entry point to the Wild Atlantic Way.", tag: "START" },
+      { title: "Slieve League", detail: "Colossal sea cliffs with breathtaking ocean views.", tag: "SEA CLIFFS" },
+      { title: "Silver Strand (Malin Beg)", detail: "A hidden horseshoe-shaped beach framed by tall cliffs.", tag: "BEACH" },
+      { title: "Glengesh Pass", detail: "A scenic winding road through a dramatic mountain valley.", tag: "SCENIC DRIVE" },
+      { title: "Assaranca Waterfall", detail: "An easily accessible roadside waterfall.", tag: "NATURE" },
+      { title: "Glenveagh National Park & Castle", detail: "Serene lakes, mountains and a Victorian castle.", tag: "NATIONAL PARK" },
+      { title: "Fanad Head Lighthouse", detail: "An iconic lighthouse perched on rugged black rocks.", tag: "LIGHTHOUSE" },
+      { title: "Ballymastocker Bay", detail: "A stunning hilltop viewpoint over a pristine golden beach.", tag: "COAST" },
+      { title: "Grianan of Aileach", detail: "A 6th-century circular stone fort with 360° panoramic views.", tag: "HISTORY" },
+      { title: "Mamore Gap", detail: "A steep, narrow mountain pass overlooking the coastline.", tag: "MOUNTAIN PASS" },
+      { title: "Malin Head", detail: "Ireland's northernmost point, with wild seascape views.", tag: "COAST" }
     ],
     budget: [
       { item: "Flights", amount: 420, detail: "Illustrative return fare per person, if applicable" },

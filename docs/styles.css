@@ -346,7 +346,7 @@ a { color: inherit; }
 .day-place { display: inline-block; margin-top: 5px; color: #91a9aa; font-size: 9px; }
 .day-stay { display: inline-block; margin: 8px 0 4px; padding: 6px 9px; border: 1px solid rgba(112, 192, 193, .18); border-radius: 999px; background: rgba(54, 119, 120, .16); color: #a8d9d4; font-size: 9px; font-weight: 700; }
 .day-chevron { color: var(--terracotta); }
-.day-moments { padding-top: 9px; }
+.day-moments { display: grid; grid-template-columns: 1fr; gap: 4px; padding-top: 9px; }
 .moment { display: grid; grid-template-columns: 10px 1fr; gap: 8px; padding: 5px 0; }
 .moment-dot { width: 6px; height: 6px; margin-top: 4px; border: 1px solid #75b9b8; border-radius: 50%; }
 .moment-label { color: #9ed4d0; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
@@ -559,7 +559,7 @@ a { color: inherit; }
   .day-marker { width: 49px; height: 49px; }
   .day-content { padding: 20px 24px 14px; }
   .day-heading h3 { font-size: 23px; }
-  .day-moments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 14px; }
+  .day-moments { gap: 8px; padding-top: 14px; }
   .moment { align-content: start; }
   .moment p, .moment-list { font-size: 12px; }
   .bucket-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
@@ -977,7 +977,7 @@ body {
   .bucket-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .day-content { padding: 20px 24px 14px; }
   .day-heading h3 { font-size: 25px; }
-  .day-moments { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 14px; }
+  .day-moments { gap: 8px; padding-top: 14px; }
   .moment p, .moment-list { font-size: 12px; }
 }
 
