@@ -23,9 +23,63 @@ window.TRIPS = {
       { icon: "☼", label: "OVERNIGHT STAYS", value: "Ardara · Buncrana" }
     ],
     itinerary: [
-      { day: "01", date: "Thursday, 5 November 2026", title: "The Wild Southwest Coast", place: "Donegal Town → Slieve League → Ardara", stay: "Ardara", morning: ["Coffee stop in Donegal Town, the entry point to the Wild Atlantic Way.", "Head to Slieve League for colossal sea cliffs and breathtaking ocean views."], afternoon: ["Silver Strand (Malin Beg): a hidden horseshoe-shaped beach framed by tall cliffs.", "Glengesh Pass: a scenic winding road through a dramatic mountain valley."], evening: ["Assaranca Waterfall: an easily accessible roadside waterfall.", "Overnight in Ardara."] },
-      { day: "02", date: "Friday, 6 November 2026", title: "National Park, Lighthouses & Bays", place: "Glenveagh · Fanad · Ballymastocker", stay: "Buncrana", morning: ["Glenveagh National Park & Castle: serene lakes, mountains and a Victorian castle."], afternoon: ["Fanad Head Lighthouse: an iconic lighthouse perched on rugged black rocks.", "Ballymastocker Bay: a stunning hilltop viewpoint over a pristine golden beach."], evening: ["Overnight in Buncrana, a strategic base to save driving time the next morning."] },
-      { day: "03", date: "Saturday, 7 November 2026", title: "Inishowen Peninsula & Return to Dublin", place: "Inishowen Peninsula → Dublin", stay: "Dublin", morning: ["Grianan of Aileach: a 6th-century circular stone fort with 360° panoramic views.", "Mamore Gap: a steep, narrow mountain pass overlooking the coastline."], afternoon: ["Malin Head: Ireland's northernmost point, with wild seascape views."], evening: ["Drive back to Dublin in the late afternoon. Check weather and road conditions before setting off."] }
+  {
+    day: "01",
+    date: "Thursday, 5 November 2026",
+    title: "The Wild Southwest Coast",
+    place: "Donegal Town → Slieve League → Glencolmcille → Ardara",
+    stay: "Ardara",
+    morning: [
+      "Parada rápida para café em Donegal Town.",
+      "Visita ao porto de Killybegs e aos impressionantes penhascos de Slieve League."
+    ],
+    afternoon: [
+      "Silver Strand (Malin Beg) e paisagens de Glencolmcille.",
+      "Trajetória pelo cênico Glengesh Pass até Ardara."
+    ],
+    evening: [
+      "Assaranca Waterfall e Maghera Beach (se a maré estiver baixa).",
+      "Pernoite e pub tradicional em Ardara.",
+      "Link: https://www.booking.com/Share-l6QQb5"
+    ]
+  },
+  {
+    day: "02",
+    date: "Friday, 6 November 2026",
+    title: "Heart of Donegal: Valleys, Castles & Coast",
+    place: "Glenveagh · Mount Errigal · Fanad Head",
+    stay: "Letterkenny",
+    morning: [
+      "Glenveagh National Park & Castle (lagos e castelo vitoriano).",
+      "Vista fotográfica do Mount Errigal e Dunlewey Church."
+    ],
+    afternoon: [
+      "Parada rápida em Bunbeg para ver o naufrágio Bád Eddie na praia.",
+      "Farol de Fanad Head e os mirantes de Ballymastocker Bay / Portsalon."
+    ],
+    evening: [
+      "Atravessar para Letterkenny para pernoite e jantar.",
+      "Link: https://www.booking.com/Share-nuBAWY",
+    ]
+  },
+  {
+    day: "03",
+    date: "Saturday, 7 November 2026",
+    title: "Inishowen Peninsula & Return to Dublin",
+    place: "Inishowen Peninsula → Dublin",
+    stay: "Dublin",
+    morning: [
+      "Fort Dunree e Mamore Gap (passe de montanha íngreme com vista para o oceano).",
+      "Malin Head: o ponto mais ao norte da ilha da Irlanda."
+    ],
+    afternoon: [
+      "Grianán of Aileach (forte circular de pedra do século VI).",
+      "Início da viagem de retorno a Dublin."
+    ],
+    evening: [
+      "Chegada em Dublin à noite."
+    ]
+  }
     ],
     bucket: [
       { title: "Donegal Town", detail: "A coffee stop and entry point to the Wild Atlantic Way.", tag: "START" },
