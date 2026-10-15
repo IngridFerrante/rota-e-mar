@@ -9,7 +9,7 @@ window.TRIPS = {
     country: "Ireland",
     countryLabels: { "en-IE": "Ireland", "pt-BR": "Irlanda" },
     region: "IRELAND'S WILD ATLANTIC COAST",
-    title: "Donegal, at our own pace.",
+    title: "Donegal",
     intro: "Dramatic sea cliffs, winding coastal roads and a weekend exploring Ireland's northwest.",
     duration: "3 days · 2 nights",
     season: "Early winter · 5–7 November 2026",
@@ -29,37 +29,40 @@ window.TRIPS = {
     title: "The Wild Southwest Coast",
     place: "Donegal Town → Slieve League → Glencolmcille → Ardara",
     stay: "Ardara",
+    route: { label: "Google Maps route", linkText: "Open route", href: "https://www.google.com/maps/dir/Donegal+Town/Bunglas+Viewpoint,+Slieve+League/Silver+Strand,+Malin+Beg/Assaranca+Waterfall" },
     morning: [
-      "Parada rápida para café em Donegal Town.",
-      "Visita ao porto de Killybegs e aos impressionantes penhascos de Slieve League."
+      "Donegal Town - The Olde Castle bar (Donegal Castle)",
+      "grab a chicken fillet roll in the spar in front of it",
+      "Cliffs de Slieve League - The upper car park at Bunglas Viewpoint."
     ],
     afternoon: [
-      "Silver Strand (Malin Beg) e paisagens de Glencolmcille.",
-      "Trajetória pelo cênico Glengesh Pass até Ardara."
+      "Silver Strand (Malin Beg).",
+      "Assaranca Waterfall - pausa em Owenwee River Waterfalls",
     ],
     evening: [
-      "Assaranca Waterfall e Maghera Beach (se a maré estiver baixa).",
-      "Pernoite e pub tradicional em Ardara.",
-      "Link: https://www.booking.com/Share-l6QQb5"
+      "Partiu casa. Mas vai pra um pub pelo amor de Deus",
+      { label: "Accommodation", linkText: "Booking.com", href: "https://www.booking.com/Share-l6QQb5" }
     ]
   },
   {
     day: "02",
     date: "Friday, 6 November 2026",
     title: "Heart of Donegal: Valleys, Castles & Coast",
-    place: "Glenveagh · Mount Errigal · Fanad Head",
+    place: "Glenveagh · Mount Errigal · Boat Beach",
+
     stay: "Letterkenny",
+    route: { label: "Google Maps route", linkText: "Open route", href: "https://www.google.com/maps/dir/The+Ring+Fort+Lodge,+Kilrean+Upper,+Kilraine,+Co.+Donegal,+F94+HR26/Strand+road+beach+car+park,+6+Strand+Rd,+Magheraclogher,+Co.+Donegal/Sacred+Heart+Catholic+Church,+Dunlewey,+Money+Beg,+Co.+Donegal/Dunlewey+Church+abandoned,+Unnamed+Rd,,+Co.+Donegal/55.0340492,-7.9637964/Letterkenny,+Co.+Donegal/@54.8732235,-8.4649541,10z/data=!4m33!4m32!1m5!1m1!1s0x485f0da448ec20b1:0xe66d3d9890c99722!2m2!1d-8.3157152!2d54.7803984!1m5!1m1!1s0x485f79004fe0217b:0xce3137af465a2bf7!2m2!1d-8.3082641!2d55.0677382!1m5!1m1!1s0x485f9cb0b1325de7:0xc121d0dc869b3a1!2m2!1d-8.1482681!2d55.0318158!1m5!1m1!1s0x485f9b6724d9e4bb:0x9b76d1ea49ab0f8f!2m2!1d-8.1116609!2d55.0193067!1m0!1m5!1m1!1s0x485feb46f3cbdb11:0xa00c7a997320e60!2m2!1d-7.7287972!2d54.9533201!3e0?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D" },
     morning: [
-      "Glenveagh National Park & Castle (lagos e castelo vitoriano).",
-      "Vista fotográfica do Mount Errigal e Dunlewey Church."
+      "Bunbeg  - para ver o naufrágio Bád Eddie na praia - Strand Road Beach Car Park",
+      "Sacred Heart Catholic Church, Dunlewey, Money Beg, Co. Donegal",
+      "Dunlewey Church - Vista fotográfica do Mount Errigal e Dunlewey Church."
     ],
     afternoon: [
-      "Parada rápida em Bunbeg para ver o naufrágio Bád Eddie na praia.",
-      "Farol de Fanad Head e os mirantes de Ballymastocker Bay / Portsalon."
+       "Glenveagh National Park Viewpoint (lagos e castelo vitoriano).",
     ],
     evening: [
       "Atravessar para Letterkenny para pernoite e jantar.",
-      "Link: https://www.booking.com/Share-nuBAWY",
+      { label: "Accommodation", linkText: "Booking.com", href: "https://www.booking.com/Share-nuBAWY" }
     ]
   },
   {
@@ -82,29 +85,30 @@ window.TRIPS = {
   }
     ],
     bucket: [
-      { title: "Donegal Town", detail: "A coffee stop and entry point to the Wild Atlantic Way.", tag: "START" },
       { title: "Slieve League", detail: "Colossal sea cliffs with breathtaking ocean views.", tag: "SEA CLIFFS" },
       { title: "Silver Strand (Malin Beg)", detail: "A hidden horseshoe-shaped beach framed by tall cliffs.", tag: "BEACH" },
-      { title: "Glengesh Pass", detail: "A scenic winding road through a dramatic mountain valley.", tag: "SCENIC DRIVE" },
+      { title: "Owenwee River Waterfalls", detail: "A scenic winding road through a dramatic mountain valley.", tag: "SCENIC DRIVE" },
       { title: "Assaranca Waterfall", detail: "An easily accessible roadside waterfall.", tag: "NATURE" },
       { title: "Glenveagh National Park & Castle", detail: "Serene lakes, mountains and a Victorian castle.", tag: "NATIONAL PARK" },
-      { title: "Fanad Head Lighthouse", detail: "An iconic lighthouse perched on rugged black rocks.", tag: "LIGHTHOUSE" },
-      { title: "Ballymastocker Bay", detail: "A stunning hilltop viewpoint over a pristine golden beach.", tag: "COAST" },
-      { title: "Grianan of Aileach", detail: "A 6th-century circular stone fort with 360° panoramic views.", tag: "HISTORY" },
-      { title: "Mamore Gap", detail: "A steep, narrow mountain pass overlooking the coastline.", tag: "MOUNTAIN PASS" },
       { title: "Malin Head", detail: "Ireland's northernmost point, with wild seascape views.", tag: "COAST" },
       { title: "Errigal Mount", detail: "It's the highest peak in County Donegal, standing at 751 meters", tag: "ROAD" },
+      { title: "Local Pub", detail: "Visit a random local pub", tag: "PUB" },
     ],
     budget: [
-      { item: "Accommodation", amount: 125, detail: "Two nights: Ardara and Buncrana" },
+      { item: "Accommodation", amount: 125, detail: "Two nights: Ardara and Letterkenny" },
       { item: "Car fuel", amount: 45, detail: "Illustrative estimate for the road trip" },
       { item: "Food & drinks", amount: 120, detail: "Meals, snacks and pub stops" },
     ],
     essentials: [
-      { title: "Waterproof layers", detail: "November weather can change quickly; bring a rain jacket and sturdy shoes." },
+      { title: "Waterproof layers", detail: "A rain jacket and sturdy shoes." },
       { title: "Payment cards", detail: "Ireland is very good accepting card everywhere pretty much." },
+      { title: "Tripods", detail: "long and short tripods." },
+      { title: "Gopro", detail: "Charge and clean the memory card." },
+      { title: "Drone", detail: "Charge the batteries and Remote Control." },
+      { title: "Nothern Lights App", detail: "App to follow if will be there strong Nothern Lights." },
     ],
-    tip: "November days are short, with sunset before 5 pm. This is an ambitious driving itinerary, especially on Thursday and Saturday: start early, check local opening times and weather."
+    tip: "November days are short, with sunset before 5 pm. Start early, check local opening times and weather. Nothern Lights if there is a big storm: dooey beach, Inishowen Peninsula, Tra na Rossan Beach "
+         
   },
   japan: {
     id: "japan",
@@ -279,7 +283,15 @@ window.TRIPS = {
         "Viagem de volta"
       ] }
     ],
+    highlights: [
+      { title: "こんにちは", detail: "Konnichiwa — Olá! / Boa tarde.", tag: "CUMPRIMENTO" },
+      { title: "ありがとうございます", detail: "Arigatō gozaimasu — Muito obrigado(a).", tag: "AGRADECIMENTO" },
+      { title: "すみません", detail: "Sumimasen — Com licença / Desculpe. Também serve para chamar alguém.", tag: "COM LICENÇA" }
+    ],
     bucket: [
+      { title: "Mario Kart", detail: "Drive around Tokyo.", tag: "TÓQUIO" },
+      { title: "Universal Studios Japan", detail: "Mario Park and Harry Potter World.", tag: "OSAKA" },
+      { title: "Kimono", detail: "Dress as a Japanese with the Kimono", tag: "KYOTO" },
       { title: "Sensō-ji de dia e à noite", detail: "Explore o templo e a Nakamise Street; volte depois para vê-lo iluminado.", tag: "TÓQUIO" },
       { title: "Vista de Asakusa", detail: "Suba ao mirante do Asakusa Culture Tourist Information Center.", tag: "TÓQUIO" },
       { title: "Akihabara", detail: "Explore as ruas de jogos, anime e lojas temáticas.", tag: "TÓQUIO" },

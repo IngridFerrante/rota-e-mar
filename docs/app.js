@@ -29,8 +29,8 @@
       headerCta: "SEU ROTEIRO", searchPlaceholder: "Busque um lugar ou experiência", searchLabel: "Busque no roteiro", searchSubmit: "Explorar", searchResults: "Resultados da busca", searchNoResults: "Não encontramos esse lugar neste roteiro.",
       shareFacts: "Compartilhar ficha", shareCopied: "Ficha copiada.", shareDone: "Pronto para compartilhar.", shareUnavailable: "O compartilhamento não está disponível neste navegador.", shareCancelled: "Compartilhamento cancelado.", shareError: "Não foi possível compartilhar a ficha da viagem.",
       pageFooter: "FEITO COM CURIOSIDADE E UMA BOA DOSE DE CAFÉ",
-      overviewEyebrow: "UM GOSTINHO DO QUE VEM AÍ", overviewTitle: "O plano, em poucas palavras.", overviewAside: "Um roteiro flexível. Bons lugares. Tempo para aproveitar.",
-      highlightsEyebrow: "LUGARES PARA GUARDAR", highlightsTitle: "Alguns momentos para esperar com carinho.", viewHighlight: "Ver este lugar",
+      overviewEyebrow: "SPOILER DO QUE VEM POR AÍ!", overviewTitle: "O plano.", overviewAside: "Um roteiro flexível. Bons lugares. Tempo para aproveitar.",
+      highlightsEyebrow: "LUGARES PARA GUARDAR", highlightsTitle: "Palavras essenciais em japonês", viewHighlight: "Ver este lugar",
       journalEyebrow: "UMA NOTA DE VIAGEM", factsEyebrow: "FICHA DA VIAGEM", factsDuration: "DURAÇÃO", factsRoute: "ROTEIRO", factsOpen: "Abrir roteiro completo",
       pace: "NO SEU RITMO", discoveries: "{count} dias<br>de descobertas.", explore: "Manhãs para explorar, tardes para se surpreender e noites para brindar.", viewItinerary: "Ver o roteiro",
       easyPlanning: "PLANEJAMENTO LEVE", costIdea: "Uma ideia clara<br>dos custos.", costIntro: "Estimativas fáceis de ajustar para fazer a viagem caber nos seus planos.", viewBudget: "Explorar orçamento",
@@ -70,9 +70,18 @@
 
   function renderMomentContent(text) {
     if (Array.isArray(text)) {
-      return `<ul class="moment-list">${text.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+      return `<ul class="moment-list">${text.map((item) => `<li>${renderMomentItem(item)}</li>`).join("")}</ul>`;
     }
     return `<p>${escapeHtml(text)}</p>`;
+  }
+
+  function renderMomentItem(item) {
+    if (typeof item === "string") return escapeHtml(item);
+    return `${escapeHtml(item.label)}: <a href="${escapeHtml(item.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.linkText)}</a>`;
+  }
+
+  function momentSearchText(item) {
+    return typeof item === "string" ? item : `${item.label} ${item.linkText}`;
   }
 
   function tripLabel(trip, label) {
@@ -145,7 +154,8 @@
   }
 
   function overviewTemplate(trip) {
-    const highlights = trip.bucket.slice(0, 3);
+    const highlights = trip.highlights || trip.bucket.slice(0, 3);
+    const interactiveHighlights = !trip.highlights;
     return `
       <div class="section-heading">
         <div><span class="eyebrow">${t("overviewEyebrow")}</span><h2>${t("overviewTitle")}</h2></div>
@@ -155,13 +165,14 @@
         ${trip.overview.map((item) => `<article class="overview-card"><span class="overview-icon" aria-hidden="true">${item.icon}</span><span class="card-label">${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></article>`).join("")}
       </div>
       <section class="highlights-section" aria-labelledby="highlights-title">
-        <div class="section-heading"><div><span class="eyebrow">${t("highlightsEyebrow")}</span><h2 id="highlights-title">${t("highlightsTitle")}</h2></div></div>
+        <div class="section-heading"><div><span class="eyebrow">${trip.highlights ? "PARA USAR NA VIAGEM" : t("highlightsEyebrow")}</span><h2 id="highlights-title">${t("highlightsTitle")}</h2></div></div>
         <div class="highlights-grid">${highlights.map((item, index) => `
-          <button class="highlight-card" type="button" data-search-section="bucket" data-search-index="${index}">
+          ${interactiveHighlights ? `<button class="highlight-card" type="button" data-search-section="bucket" data-search-index="${index}">` : `<article class="highlight-card highlight-card--static">`}
             <span class="highlight-number" aria-hidden="true">0${index + 1}</span><span class="bucket-tag">${escapeHtml(item.tag)}</span>
             <strong>${escapeHtml(item.title)}</strong><span class="bucket-detail">${escapeHtml(item.detail)}</span>
-            <span class="highlight-link">${t("viewHighlight")} <span aria-hidden="true">↗</span></span>
-          </button>`).join("")}</div>
+            ${interactiveHighlights ? `<span class="highlight-link">${t("viewHighlight")} <span aria-hidden="true">↗</span></span>` : ""}
+          ${interactiveHighlights ? "</button>" : "</article>"}`).join("")}</div>
+        ${trip.id === "donegal" ? `<figure class="trip-route-map"><img src="assets/donegal-route-map.jpg" alt="Illustrated map of the three-day Donegal adventure route, from Donegal Town along the coast and through Inishowen."></figure>` : ""}
       </section>
       <div class="feature-grid">
         <article class="feature-card feature-itinerary"><div class="feature-topline"><span>${t("pace")}</span><span aria-hidden="true">↗</span></div><h3>${interpolate(t("discoveries"), { count: trip.itinerary.length })}</h3><p>${t("explore")}</p><button class="text-link" data-section="itinerary">${t("viewItinerary")} <span aria-hidden="true">→</span></button></article>
@@ -183,6 +194,7 @@
         <article class="timeline-day" data-day-search="${index}">
           <div class="day-marker"><span>${t("day")}</span><strong>${escapeHtml(day.day)}</strong></div>
           <div class="day-content"><div class="day-heading"><div><h3>${escapeHtml(day.title)}</h3>${day.date ? `<span class="day-date">${escapeHtml(day.date)}</span>` : ""}<span class="day-place">⌖ ${escapeHtml(day.place)}</span></div><span class="day-chevron" aria-hidden="true">✳</span></div>
+            ${day.route ? `<p class="day-route">${renderMomentItem(day.route)}</p>` : ""}
             <div class="day-moments">
               ${[[t("morning"), day.morning], [t("afternoon"), day.afternoon], [t("evening"), day.evening]].map(([label, text]) => `<div class="moment"><span class="moment-dot" aria-hidden="true"></span><div><span class="moment-label">${label}</span>${renderMomentContent(text)}</div></div>`).join("")}
             </div>
@@ -269,7 +281,10 @@
     const normalizedQuery = query.trim().toLocaleLowerCase(trip.language || "pt-BR");
     if (!normalizedQuery) return [];
     const days = trip.itinerary.map((day, index) => {
-      const moments = [day.morning, day.afternoon, day.evening].flatMap((value) => Array.isArray(value) ? value : [value]).join(" ");
+      const moments = [day.morning, day.afternoon, day.evening]
+        .flatMap((value) => Array.isArray(value) ? value : [value])
+        .map(momentSearchText)
+        .join(" ");
       return {
         section: "itinerary",
         index,
