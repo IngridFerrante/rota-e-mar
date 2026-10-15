@@ -15,9 +15,8 @@ window.TRIPS = {
     season: "Early winter · 5–7 November 2026",
     currency: "€",
     currencyLabel: "EUR",
-    image: "assets/donegal-mount-errigal-2022.jpg",
-    imagePosition: "center 12%",
-    imageCredit: "https://commons.wikimedia.org/wiki/File:Mount_Errigal_2022.jpg",
+    image: "assets/donegal-slieve-league-pexels.jpg",
+    imagePosition: "center 52%",
     overview: [
       { icon: "⌖", label: "ROUTE", value: "Dublin · Donegal · Inishowen" },
       { icon: "↗", label: "GETTING AROUND", value: "Road trip by car" },
