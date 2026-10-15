@@ -153,6 +153,25 @@ a { color: inherit; }
 }
 
 .hero-copy .eyebrow { color: #b9e1dc; }
+.hero-image-credit {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  max-width: calc(100% - 24px);
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 4px;
+  background: rgba(5, 16, 19, .68);
+  color: rgba(255, 255, 255, .9);
+  font-size: 8px;
+  line-height: 1.4;
+  text-align: right;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+.hero-image-credit:hover { background: rgba(5, 16, 19, .86); }
+.hero-image-credit a { color: inherit; text-underline-offset: 2px; }
 .hero-copy h1 {
   max-width: 680px;
   margin: 12px 0 9px;
@@ -1001,7 +1020,7 @@ body {
   .header-cta > span:first-child { display: none; }
   .header-cta span:last-child { width: 29px; height: 29px; }
   .topbar { width: calc(100% - 30px); height: 42px; }
-  .trip-hero { min-height: 660px; margin: 0 8px; border-radius: 6px; }
+  .trip-hero { min-height: 660px; margin: 0 8px; border-radius: 6px; background-position: 22% 12%; }
   .hero-copy { padding: 44px 21px 210px; }
   .hero-copy h1 { font-size: clamp(58px, 12vw, 86px); }
   .hero-copy > p { font-size: 12px; }

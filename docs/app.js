@@ -151,6 +151,7 @@
     hero.style.setProperty("--hero-image", `url("${trip.image}")`);
     hero.style.setProperty("--hero-position", trip.imagePosition);
     hero.dataset.trip = trip.id;
+    hero.querySelector(".hero-image-credit").hidden = !trip.imageCredit;
   }
 
   function overviewTemplate(trip) {
