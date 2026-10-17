@@ -125,6 +125,7 @@ window.TRIPS = {
     currencyLabel: "JPY",
     image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1800&q=85&v=japan-hero-restored-20261013",
     imagePosition: "center 56%",
+    highlightsTitle: "Palavras essenciais em japonês",
     overview: [
       { icon: "⌖", label: "CIDADES", value: "Tóquio · Kyoto · Osaka" },
       { icon: "↗", label: "TRANSPORTE", value: "Shinkansen + metrô" },
@@ -322,5 +323,74 @@ window.TRIPS = {
       { title: "Adaptador e seguro viagem", detail: "O Japão usa tomadas tipo A/B; salve a apólice e contatos offline." }
     ],
     tip: "Com 15 dias, vale reservar certos mirantes e o shinkansen com antecedência. Leve um chip de dados, guarde mapas offline e deixe tempo para se perder nos bairros — é aí que o Japão fica mais especial."
+  },
+  shanghai: {
+    id: "shanghai",
+    language: "pt-BR",
+    navLabel: "Shanghai",
+    navLabels: { "en-IE": "Shanghai", "pt-BR": "Shanghai" },
+    country: "China",
+    countryLabels: { "en-IE": "China", "pt-BR": "China" },
+    region: "CHINA · RIO HUANGPU",
+    title: "Shanghai, em um dia.",
+    intro: "Um dia entre jardins clássicos, ruas cheias de energia e o horizonte iluminado do Bund.",
+    duration: "1 dia",
+    season: "Roteiro flexível · confira horários e reservas",
+    currency: "¥",
+    currencyLabel: "CNY",
+    image: "assets/shanghai-skyline-unsplash.jpg",
+    imagePosition: "center 52%",
+    highlightsTitle: "Palavras essenciais em mandarim",
+    overview: [
+      { icon: "⌖", label: "CIDADE", value: "Shanghai · Pudong" },
+      { icon: "↗", label: "TRANSPORTE", value: "Metrô + caminhada" },
+      { icon: "☼", label: "RITMO", value: "1 dia · centro e Bund" }
+    ],
+    itinerary: [
+      {
+        day: "01",
+        title: "Shanghai clássica e skyline",
+        place: "Yu Garden · Nanjing Road · The Bund · Pudong",
+        route: { label: "Rota sugerida", linkText: "Abrir no Google Maps", href: "https://www.google.com/maps/dir/Yu+Garden,+Shanghai/Nanjing+Road,+Shanghai/The+Bund,+Shanghai/Lujiazui,+Shanghai" },
+        morning: [
+          "Comece pelo Yu Garden e pela Cidade Antiga; confirme os dias de funcionamento e a necessidade de ingresso com antecedência.",
+          "Faça uma pausa para provar xiaolongbao ou outra especialidade local."
+        ],
+        afternoon: [
+          "Siga para People's Square e caminhe por um trecho da Nanjing Road.",
+          "Continue até o The Bund para ver a arquitetura histórica e a vista do rio Huangpu."
+        ],
+        evening: [
+          "Atravesse o rio de balsa ou metrô até Lujiazui para ver o skyline iluminado.",
+          "Opcional: escolha um mirante e confira horários, ingressos e reserva no canal oficial."
+        ]
+      }
+    ],
+    highlights: [
+      { title: "你好", detail: "Nǐ hǎo — Olá.", tag: "CUMPRIMENTO" },
+      { title: "谢谢", detail: "Xièxie — Obrigado(a).", tag: "AGRADECIMENTO" },
+      { title: "请问，地铁站在哪里？", detail: "Qǐngwèn, dìtiě zhàn zài nǎlǐ? — Com licença, onde fica a estação de metrô?", tag: "COMO CHEGAR" },
+      { title: "多少钱？", detail: "Duōshao qián? — Quanto custa?", tag: "COMPRAS" }
+    ],
+    bucket: [
+      { title: "Yu Garden e Cidade Antiga", detail: "Jardim clássico e ruas tradicionais; confira horários e ingressos antes de ir.", tag: "JARDIM" },
+      { title: "Nanjing Road", detail: "Uma das ruas comerciais mais conhecidas da cidade.", tag: "PASSEIO" },
+      { title: "The Bund", detail: "Caminhe pelo calçadão e admire a arquitetura junto ao Huangpu.", tag: "ARQUITETURA" },
+      { title: "Lujiazui à noite", detail: "Atravesse o rio para ver os arranha-céus iluminados de Pudong.", tag: "SKYLINE" },
+      { title: "Experimentar xiaolongbao", detail: "Prove os dumplings locais; peça ajuda para escolher o recheio se precisar.", tag: "COMIDA" }
+    ],
+    budget: [
+      { item: "Transporte local", amount: 60, detail: "Estimativa para metrô e deslocamentos do dia" },
+      { item: "Alimentação", amount: 180, detail: "Refeições, lanches e bebidas" },
+      { item: "Ingressos & extras", amount: 150, detail: "Estimativa; confirme valores e reservas" }
+    ],
+    essentials: [
+      { title: "Passaporte e entrada na China", detail: "Confira os requisitos oficiais para sua nacionalidade e as datas da viagem." },
+      { title: "Pagamentos", detail: "Verifique antes da viagem como configurar Alipay ou WeChat Pay com seu cartão e leve uma alternativa." },
+      { title: "Internet e mapas", detail: "Prepare conectividade, tradutor e mapas offline; alguns serviços podem não estar disponíveis." },
+      { title: "Endereço do hotel em chinês", detail: "Salve o endereço para mostrar a motoristas e em deslocamentos." },
+      { title: "Calçados confortáveis", detail: "O roteiro tem trechos a pé; ajuste a ordem conforme clima e energia." }
+    ],
+    tip: "Com apenas um dia, mantenha a rota concentrada no centro e no Bund para não perder tempo cruzando a cidade. Confira horários oficiais de jardins e mirantes, e deixe ingressos sujeitos à disponibilidade."
   }
 };

@@ -12,6 +12,7 @@
       highlightsEyebrow: "PLACES TO REMEMBER", highlightsTitle: "A few moments to look forward to.", viewHighlight: "Explore this stop",
       journalEyebrow: "A NOTE FROM THE TRIP", factsEyebrow: "TRIP AT A GLANCE", factsDuration: "LENGTH", factsRoute: "ROUTE", factsOpen: "Open the itinerary",
       pace: "AT YOUR OWN PACE", discoveries: "{count} days<br>of discovery.", explore: "Mornings to explore, afternoons for surprises and evenings to unwind.", viewItinerary: "View the itinerary",
+      singleDiscovery: "1 day<br>of discovery.",
       easyPlanning: "EASY PLANNING", costIdea: "A clearer idea<br>of the costs.", costIntro: "Illustrative estimates you can update to suit your plans.", viewBudget: "Explore the budget",
       dreamTripTip: "A NOTE FOR THE TRIP WE'RE ALREADY DREAMING ABOUT", itineraryEyebrow: "DAY BY DAY", itineraryTitle: "The journey is part of it.", daysIdeas: "{count} days · ideas to make your own",
       day: "DAY", morning: "MORNING", afternoon: "AFTERNOON", evening: "EVENING", overnight: "Overnight",
@@ -30,9 +31,10 @@
       shareFacts: "Compartilhar ficha", shareCopied: "Ficha copiada.", shareDone: "Pronto para compartilhar.", shareUnavailable: "O compartilhamento não está disponível neste navegador.", shareCancelled: "Compartilhamento cancelado.", shareError: "Não foi possível compartilhar a ficha da viagem.",
       pageFooter: "FEITO COM CURIOSIDADE E UMA BOA DOSE DE CAFÉ",
       overviewEyebrow: "SPOILER DO QUE VEM POR AÍ!", overviewTitle: "O plano.", overviewAside: "Um roteiro flexível. Bons lugares. Tempo para aproveitar.",
-      highlightsEyebrow: "LUGARES PARA GUARDAR", highlightsTitle: "Palavras essenciais em japonês", viewHighlight: "Ver este lugar",
+      highlightsEyebrow: "LUGARES PARA GUARDAR", highlightsTitle: "Alguns momentos para guardar", viewHighlight: "Ver este lugar",
       journalEyebrow: "UMA NOTA DE VIAGEM", factsEyebrow: "FICHA DA VIAGEM", factsDuration: "DURAÇÃO", factsRoute: "ROTEIRO", factsOpen: "Abrir roteiro completo",
       pace: "NO SEU RITMO", discoveries: "{count} dias<br>de descobertas.", explore: "Manhãs para explorar, tardes para se surpreender e noites para brindar.", viewItinerary: "Ver o roteiro",
+      singleDiscovery: "1 dia<br>de descobertas.",
       easyPlanning: "PLANEJAMENTO LEVE", costIdea: "Uma ideia clara<br>dos custos.", costIntro: "Estimativas fáceis de ajustar para fazer a viagem caber nos seus planos.", viewBudget: "Explorar orçamento",
       dreamTripTip: "DICA DE QUEM JÁ ESTÁ SONHANDO COM A VIAGEM", itineraryEyebrow: "DIA A DIA", itineraryTitle: "O caminho também faz parte.", daysIdeas: "{count} dias · ideias para adaptar no caminho",
       day: "DIA", morning: "MANHÃ", afternoon: "TARDE", evening: "NOITE", overnight: "Pernoite",
@@ -45,7 +47,7 @@
     }
   };
   const sectionIds = ["overview", "itinerary", "bucket", "budget", "essentials"];
-  const icons = { donegal: "✳", japan: "◈" };
+  const icons = { donegal: "✳", japan: "◈", shanghai: "✦" };
   const requestedTrip = new URLSearchParams(window.location.search).get("trip");
   let activeTrip = Object.values(trips).some((trip) => trip.id === requestedTrip) ? requestedTrip : "donegal";
   let activeSection = "overview";
@@ -156,6 +158,7 @@
   function overviewTemplate(trip) {
     const highlights = trip.highlights || trip.bucket.slice(0, 3);
     const interactiveHighlights = !trip.highlights;
+    const discoveries = trip.itinerary.length === 1 ? t("singleDiscovery") : interpolate(t("discoveries"), { count: trip.itinerary.length });
     return `
       <div class="section-heading">
         <div><span class="eyebrow">${t("overviewEyebrow")}</span><h2>${t("overviewTitle")}</h2></div>
@@ -165,7 +168,7 @@
         ${trip.overview.map((item) => `<article class="overview-card"><span class="overview-icon" aria-hidden="true">${item.icon}</span><span class="card-label">${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></article>`).join("")}
       </div>
       <section class="highlights-section" aria-labelledby="highlights-title">
-        <div class="section-heading"><div><span class="eyebrow">${trip.highlights ? "PARA USAR NA VIAGEM" : t("highlightsEyebrow")}</span><h2 id="highlights-title">${t("highlightsTitle")}</h2></div></div>
+        <div class="section-heading"><div><span class="eyebrow">${trip.highlights ? "PARA USAR NA VIAGEM" : t("highlightsEyebrow")}</span><h2 id="highlights-title">${escapeHtml(trip.highlightsTitle || t("highlightsTitle"))}</h2></div></div>
         <div class="highlights-grid">${highlights.map((item, index) => `
           ${interactiveHighlights ? `<button class="highlight-card" type="button" data-search-section="bucket" data-search-index="${index}">` : `<article class="highlight-card highlight-card--static">`}
             <span class="highlight-number" aria-hidden="true">0${index + 1}</span><span class="bucket-tag">${escapeHtml(item.tag)}</span>
@@ -175,7 +178,7 @@
         ${trip.id === "donegal" ? `<figure class="trip-route-map"><img src="assets/donegal-route-map.jpg" alt="Illustrated map of the three-day Donegal adventure route, from Donegal Town along the coast and through Inishowen."></figure>` : ""}
       </section>
       <div class="feature-grid">
-        <article class="feature-card feature-itinerary"><div class="feature-topline"><span>${t("pace")}</span><span aria-hidden="true">↗</span></div><h3>${interpolate(t("discoveries"), { count: trip.itinerary.length })}</h3><p>${t("explore")}</p><button class="text-link" data-section="itinerary">${t("viewItinerary")} <span aria-hidden="true">→</span></button></article>
+        <article class="feature-card feature-itinerary"><div class="feature-topline"><span>${t("pace")}</span><span aria-hidden="true">↗</span></div><h3>${discoveries}</h3><p>${t("explore")}</p><button class="text-link" data-section="itinerary">${t("viewItinerary")} <span aria-hidden="true">→</span></button></article>
         <article class="feature-card feature-budget"><div class="feature-topline"><span>${t("easyPlanning")}</span><span aria-hidden="true">◉</span></div><h3>${t("costIdea")}</h3><p>${t("costIntro")}</p><button class="text-link" data-section="budget">${t("viewBudget")} <span aria-hidden="true">→</span></button></article>
       </div>
       <div class="editorial-grid">
